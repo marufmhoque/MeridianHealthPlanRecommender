@@ -1,0 +1,5 @@
+[
+  {"member_id": "M1001", "name": "Jordan Ellis", "plan": "Gold PPO", "deductible_met": 400, "oop_met": 400, "pt_visits_ytd": 8},
+  {"member_id": "M1002", "name": "Priya Raman", "plan": "Gold PPO", "deductible_met": 1500, "oop_met": 2200, "pt_visits_ytd": 14},
+  {"member_id": "M1003", "name": "Luis Ortega", "plan": "Gold PPO", "deductible_met": 0, "oop_met": 0, "pt_visits_ytd": 0}
+]

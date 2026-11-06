@@ -1,0 +1,9 @@
+langgraph>=1.2,<2
+langgraph-checkpoint-sqlite>=3.1,<4
+chromadb>=1.5,<2
+anthropic>=2.6,<3
+pydantic>=2.13,<3
+streamlit>=1.67,<2
+pandas>=3.0,<4
+pytest>=9.0,<10
+# Optional: set OPENAI_API_KEY and install `openai` to use text-embedding-3-small for policy embeddings.

@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8501:8501"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - pa_state:/app/.state   # reviewer memory + LangGraph checkpoints survive restarts
+volumes:
+  pa_state:

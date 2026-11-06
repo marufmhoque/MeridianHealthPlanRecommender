@@ -1,0 +1,9 @@
+{
+  "_note": "FICTIONAL illustrative in-network allowed amounts used only to turn plan cost-sharing rules into dollar estimates. Replace with the real contracted fee schedule.",
+  "72148": {"description": "MRI lumbar spine without contrast", "service_type": "advanced_imaging", "allowed_amount": 1200.00},
+  "72149": {"description": "MRI lumbar spine with contrast", "service_type": "advanced_imaging", "allowed_amount": 1400.00},
+  "72158": {"description": "MRI lumbar spine without and with contrast", "service_type": "advanced_imaging", "allowed_amount": 1700.00},
+  "97110": {"description": "Therapeutic exercise, each 15 min", "service_type": "outpatient_pt_ot", "allowed_amount": 45.00},
+  "97140": {"description": "Manual therapy, each 15 min", "service_type": "outpatient_pt_ot", "allowed_amount": 42.00},
+  "97530": {"description": "Therapeutic activities, each 15 min", "service_type": "outpatient_pt_ot", "allowed_amount": 48.00}
+}

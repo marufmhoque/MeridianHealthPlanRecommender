@@ -1,0 +1,23 @@
+{
+  "_source": "Structured from data/benefits/benefits_summary_GOLD_PPO.md (fictional). Values are per individual, in-network unless noted.",
+  "Gold PPO": {
+    "plan_name": "Meridian Gold PPO 2026",
+    "deductible": {"in_network": 1500, "out_of_network": 3000},
+    "oop_max": {"in_network": 5000, "out_of_network": 10000},
+    "services": {
+      "advanced_imaging": {
+        "label": "Advanced imaging (MRI/CT/PET)",
+        "in_network": {"type": "coinsurance_after_deductible", "coinsurance": 0.20},
+        "out_of_network": {"type": "coinsurance_after_deductible", "coinsurance": 0.40},
+        "prior_auth_required": true
+      },
+      "outpatient_pt_ot": {
+        "label": "Outpatient PT/OT",
+        "in_network": {"type": "copay_per_visit", "copay": 40, "annual_visit_limit": 30},
+        "out_of_network": {"type": "coinsurance_after_deductible", "coinsurance": 0.40, "annual_visit_limit": 30},
+        "prior_auth_required": "visits 13+ (per MP-310)"
+      }
+    },
+    "no_auth_rule": "Failure to obtain required prior authorization: claim may be denied; member not billed for in-network services."
+  }
+}

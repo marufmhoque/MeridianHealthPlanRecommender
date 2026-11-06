@@ -1,0 +1,9 @@
+{
+  "_note": "Synthetic test cases written for this repository (not the assignment's mock requests).",
+  "CASE_RED_FLAG": {"recommendation": "APPROVE", "basis": "MP-204-C1"},
+  "CASE_CONSERVATIVE": {"recommendation": "APPROVE", "basis": "MP-204-C2"},
+  "CASE_ACUTE": {"recommendation": "DENY", "basis": "MP-204-NMN1"},
+  "CASE_INCOMPLETE": {"recommendation": "PEND", "basis": "MP-204-DOC"},
+  "CASE_PT_PROGRESS": {"recommendation": "APPROVE", "basis": "MP-310-C1-3"},
+  "CASE_PT_MAINTENANCE": {"recommendation": "DENY", "basis": "MP-310-C3"}
+}
