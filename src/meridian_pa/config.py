@@ -8,8 +8,26 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = Path(os.getenv("MERIDIAN_DATA_DIR", ROOT / "data"))
 POLICY_DIR = DATA_DIR / "policies"
-STATE_DIR = Path(os.getenv("MERIDIAN_STATE_DIR", ROOT / ".state"))
-OUTPUT_DIR = Path(os.getenv("MERIDIAN_OUTPUT_DIR", ROOT / "outputs"))
+
+
+def _writable_dir(preferred: Path, name: str) -> Path:
+    """Use ``preferred`` if it can be created and written, else a temp dir (read-only hosts)."""
+    try:
+        preferred.mkdir(parents=True, exist_ok=True)
+        probe = preferred / ".write_test"
+        probe.write_text("ok")
+        probe.unlink()
+        return preferred
+    except OSError:
+        import tempfile
+
+        fallback = Path(tempfile.gettempdir()) / "meridian_pa" / name
+        fallback.mkdir(parents=True, exist_ok=True)
+        return fallback
+
+
+STATE_DIR = _writable_dir(Path(os.getenv("MERIDIAN_STATE_DIR", ROOT / ".state")), "state")
+OUTPUT_DIR = _writable_dir(Path(os.getenv("MERIDIAN_OUTPUT_DIR", ROOT / "outputs")), "outputs")
 
 # Claude is used only when a key is present AND LLM mode is not disabled.
 # Without it the pipeline runs fully deterministically (rules + local embeddings).

@@ -149,7 +149,7 @@ with tabs[1]:
     st.caption(f"Extraction method: {facts.get('extraction_method', 'n/a')}")
     rows = [{"Field": k, "Value": json.dumps(v) if isinstance(v, (list, dict)) else str(v)}
             for k, v in facts.items() if v not in (None, [], "")]
-    st.dataframe(pd.DataFrame(rows), hide_index=True, use_container_width=True)
+    st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
     st.subheader("PHI-redacted note (what leaves the system)")
     st.code(state.get("redacted_note", ""), language=None)
 
@@ -208,7 +208,7 @@ with tabs[4]:
     digraph { rankdir=LR; node [shape=box, style=rounded];
       guardrails_in -> clinical_extractor -> policy_retriever -> financial_calculator -> decision_synthesizer -> guardrails_out;
       guardrails_in -> reject_input [style=dashed, label="invalid"]; reject_input -> guardrails_out; }""")
-    st.dataframe(pd.DataFrame(state.get("trace", [])), hide_index=True, use_container_width=True)
+    st.dataframe(pd.DataFrame(state.get("trace", [])), hide_index=True, width="stretch")
     st.subheader("Output guardrails")
     st.json(state.get("output_validation", {}))
 
@@ -225,6 +225,6 @@ with tabs[5]:
         "request": p["request_id"], "AI": p["recommendation"], "expected": p["expected"], "correct": p["correct"],
         "faithfulness": p["faithfulness"]["score"], "relevance": p["answer_relevance"]["score"],
         "context recall": p["context_recall"]["score"], "guardrails": p["guardrail_pass"],
-    } for p in report["per_request"]]), hide_index=True, use_container_width=True)
+    } for p in report["per_request"]]), hide_index=True, width="stretch")
     ov = reviewer.memory.override_rate()
     st.caption(f"Nurse reviews recorded: {ov['reviews']}, overrides of AI recommendation: {ov['overrides']}")

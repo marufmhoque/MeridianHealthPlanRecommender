@@ -140,6 +140,18 @@ docker compose up --build                      # same dashboard, in a container
 
 Optional: copy `.env.example` to `.env` and set `ANTHROPIC_API_KEY` to enable Claude extraction and tool planning. You can also set `OPENAI_API_KEY` (and `pip install openai`) for OpenAI embeddings.
 
+## Deploy on Streamlit Community Cloud
+
+1. Push this repo to GitHub (already done) and create an app at [share.streamlit.io](https://share.streamlit.io) with **Main file path** `streamlit_app.py`.
+2. Optional: under **App settings -> Secrets**, paste (see `.streamlit/secrets.toml.example`):
+
+   ```toml
+   ANTHROPIC_API_KEY = "sk-ant-..."
+   ```
+
+   Without it the app runs fully offline in deterministic mode. Secrets are read from `st.secrets`, falling back to environment variables, and are never written to disk. Do not set `MERIDIAN_REVIEW_DATE` on the cloud.
+3. The policy index is built in memory on first load (cached for the life of the server process). Reviewer memory and checkpoints live in `.state/`, which is **ephemeral** on Streamlit Cloud: they reset whenever the app restarts or sleeps. Download results from the dashboard before closing.
+
 ## Repository layout
 
 ```

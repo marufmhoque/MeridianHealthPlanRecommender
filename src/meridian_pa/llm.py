@@ -20,7 +20,8 @@ _FALLBACK_BETA = "server-side-fallback-2026-07-01"
 def _client():
     import anthropic
 
-    return anthropic.Anthropic()
+    # Bounded waits so a slow or unreachable API falls back to deterministic mode instead of hanging the UI.
+    return anthropic.Anthropic(timeout=60.0, max_retries=1)
 
 
 def _request(**kwargs):
